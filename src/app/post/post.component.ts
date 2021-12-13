@@ -19,6 +19,9 @@ export class PostComponent implements OnInit {
       this.posts = res;
     });
 
-    this.post = postsMock.find((post) => post.id === +this.route.snapshot.params['id']);
+    this.route.params.subscribe(param => 
+
+      this.post = this.posts.find(post => post.slug == param['slug'])
+    ) 
   }
 }
