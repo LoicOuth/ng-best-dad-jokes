@@ -12,12 +12,18 @@ export class HomeComponent implements OnInit {
   title = 'ng-best-dad-jokes';
   posts: Post[] = [];
 
+  isLoading : Boolean = false;
+
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
+
     this.postService.getPosts().subscribe(res => {
       this.posts = res;
-    })
+    });
+
+    this.isLoading = false;
   }
 
 }
